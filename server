@@ -1,7 +1,7 @@
 #!/bin/sh
 # Author: sam2kb
 
-ROOT_ALIAS='vasya@pupkin.ru'  # Set your email here
+ROOT_ALIAS='7557598@gmail.com'  # Set your email here
 CENTOS_VERSION='6'  # Major RedHat version e.g. 5 or 6
 
 ZONEINFO='America/New_York'
