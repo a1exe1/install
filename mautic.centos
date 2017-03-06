@@ -1,3 +1,6 @@
+more fully https://autoize.com/mautic-installation-guide-centos/
+
+
 yum -y update
 yum -y install httpd mariadb-server mariadb
 yum -y install epel-release
