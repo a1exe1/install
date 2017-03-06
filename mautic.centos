@@ -1,4 +1,9 @@
 more fully https://autoize.com/mautic-installation-guide-centos/
+https://www.vultr.com/docs/how-to-install-apache-mysql-and-php-on-centos-6
+
+/sbin/iptables -I INPUT -p tcp --dport 80 -j ACCEPT
+/etc/rc.d/init.d/iptables save
++sudo yum install php70u-json
 
 
 yum -y update
