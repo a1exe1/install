@@ -1,0 +1,41 @@
+yum -y update
+yum -y install httpd mariadb-server mariadb
+yum -y install epel-release
+yum -y update
+yum -y install php70w php70w-cli php70w-xml php70w-pdo php70w-mcrypt php70w-imap php70w-posix php70w-intl php70w-mysqli php70w-pear php70w-imap php70w-curl php70w-gd
+curl -sS https://getcomposer.org/installer | php 
+mv composer.phar /usr/bin/composer
+systemctl start httpd 
+systemctl enable httpd
+systemctl start mariadb 
+systemctl enable mariadb
+mysql_secure_installation
+mysql -u root -p
+CREATE DATABASE mautic;
+CREATE USER 'mautic_user'@'localhost' IDENTIFIED BY '19111981';
+GRANT ALL PRIVILEGES ON mautic.* TO 'mautic_user'@'localhost';
+FLUSH PRIVILEGES;
+cd /var/www/
+ wget https://www.mautic.org/download/latest -O mautic.zip
+ yum -y install unzip
+ unzip mautic.zip -d mautic
+ nano /etc/httpd/conf.d/yourdomain.com.conf 
+ 
+ <VirtualHost *:80>
+    ServerAdmin me@liptanbiswas.com
+    ServerName yourdomain.com
+    DocumentRoot /var/www/mautic
+    <Directory />
+        Options FollowSymLinks
+        AllowOverride All
+    </Directory><Directory /var/www/mautic>
+        Options FollowSymLinks MultiViews
+        AllowOverride All
+        Order allow,deny
+        Allow from All
+    </Directory> 
+TransferLog /var/log/httpd/yourdomain.com_access.log 
+ErrorLog /var/log/httpd/yourdomain.com_error.log 
+</VirtualHost>
+ 
+ chown -R apache:apache /var/www/mautic
