@@ -22,8 +22,8 @@ cd /var/www/
  nano /etc/httpd/conf.d/yourdomain.com.conf 
  
  <VirtualHost *:80>
-    ServerAdmin me@liptanbiswas.com
-    ServerName yourdomain.com
+    ServerAdmin 7557598@gmail.com
+    ServerName asklanding.top
     DocumentRoot /var/www/mautic
     <Directory />
         Options FollowSymLinks
@@ -34,8 +34,9 @@ cd /var/www/
         Order allow,deny
         Allow from All
     </Directory> 
-TransferLog /var/log/httpd/yourdomain.com_access.log 
-ErrorLog /var/log/httpd/yourdomain.com_error.log 
+TransferLog /var/log/httpd/asklanding.top_access.log 
+ErrorLog /var/log/httpd/asklanding.top_error.log 
 </VirtualHost>
  
  chown -R apache:apache /var/www/mautic
+ systemctl restart httpd
